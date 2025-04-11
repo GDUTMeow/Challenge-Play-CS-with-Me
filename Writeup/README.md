@@ -14,7 +14,7 @@ Cobalt Strike 是一款网络安全工具，你可以把它想象成「黑客模
 
 控制的流程如图所示
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\69a03410-3d29-4cb3-a8cd-6ddfe220223f-1737195799564-7.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/69a03410-3d29-4cb3-a8cd-6ddfe220223f-1737195799564-7.png)
 
 ## 开始做题
 
@@ -26,7 +26,7 @@ Cobalt Strike 是一款网络安全工具，你可以把它想象成「黑客模
 >
 > 原理：https://isc.sans.edu/diary/Finding+Metasploit+Cobalt+Strike+URLs/27204
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411214817734.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411214817734.png)
 
 
 
@@ -34,9 +34,9 @@ Cobalt Strike 是一款网络安全工具，你可以把它想象成「黑客模
 
 我们得将这一块 beacon 通信的流量先给提取出来，选择第6条请求，在左上角可以直接导出对象
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411214734879.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411214734879.png)
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411214845716.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411214845716.png)
 
 导出为 `khR7.vir`（注：文件名自己命名就行，没什么讲究，`vir` 在这里是个习惯性问题），导出以后就能用 1768.py 进行分析
 
@@ -125,11 +125,11 @@ Public key config entry found: 0x0002fe54 (xorKey b'.') (LSFIF: b'N.*.,.*.>...+.
 
 路径这一块内容我们也能在 wireshark 中清晰看见
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411214955454.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411214955454.png)
 
 分析请求的时候需要注意的是，在 Cobalt Strike 的 GET 请求之中，Cookie 会用 Base64 进行编码
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411215005565.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411215005565.png)
 
 然而你会发现直接去 b64 解码是出不来的，是因为这个内容是进行过加密的，服务器端会使用私钥进行解密
 
@@ -347,7 +347,7 @@ Field: b'evil.exe'
 
 然后这里有一个 `evil.exe`，先别急，这个文件是生成的时候保存的文件名，不代表后面可以不重命名呀
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411215354059.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411215354059.png)
 
 这里保存为什么，都不能代表最后在 Luminoria 的电脑里面它的样子，所以 `evil.exe` 不是正确答案！
 
@@ -769,11 +769,11 @@ $ py .\CobaltStrikeAnalyze\cs-parse-traffic.py -r dd243b04f9b7a2d3d6a5d965058492
 
 由此得到 5 个 payload 文件
 
-![image-20250411224442064](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411224442064.png)
+![image-20250411224442064](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411224442064.png)
 
 在 `payload-4aadfd722106632f48ee571212b5e803.vir` 文件中，能够看到很明显的SSLKEY特征
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411224514286.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411224514286.png)
 
 所以这就是第二题问的 `SSLKEY.log` 文件，拿去赛博厨子 md5 一下
 
@@ -786,27 +786,27 @@ $ py .\CobaltStrikeAnalyze\cs-parse-traffic.py -r dd243b04f9b7a2d3d6a5d965058492
 
 所以这里五个文件中，剩下那个比较大的就很可能是流量包，改后缀为 `.pcapng`
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411224826589.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411224826589.png)
 
 发现里面有大量的 TLS 流量，结合上面第二题要的 `SSLKEY.log`，在 wireshark 里面配置一下
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411225047523.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411225047523.png)
 
 配置好后担心不对怎么办，像我一样配置一个 `TLS debug file`，打开这个 file 可以看到匹配结果
 
 发现里面有大量的 `matched` 说明我们是对的
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411225139498.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411225139498.png)
 
 wireshark 解析完后，我们再来看一下 http 流量，在上方的过滤框打 `http` 并回车，发现是空的
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411225215637.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411225215637.png)
 
 这时候不要急，我们点击上方的统计，协议分级统计看看
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411225255091.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411225255091.png)
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411225305651.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411225305651.png)
 
 发现本题使用的是 `HTTP/2.0` 而不是 `HTTP/1.0`，而 `http` 是筛选 `HTTP/1.0` 的，当然看不到啦
 
@@ -814,8 +814,18 @@ wireshark 解析完后，我们再来看一下 http 流量，在上方的过滤�
 
 选到 358 数据包，在下面导出分组字节流
 
-![](F:\Git\GDUTMeow\Challenge-Play-CS-with-Me\Pictures\image-20250411225450057.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411225450057.png)
 
 把这个文件保存为 png，就能够看到 `flag`了，这里特意将 `i` 和 `l` 区分了一下，怕选手打错
 
 `flag{CS-1s_cob@LT_stRiK3-Not_C0UNteR_5triKe_Ru5h_b}`
+
+## 后话
+
+其实我一开始也纳闷为什么它 http 没有流量，后来发现 Github Pages 走的是 2.0，导致筛选 1.0 没有流量……
+
+本来我还想换证书的（西湖论剑是换了的），但是后来发现生成的证书都爆不出来私钥，那这题就解不出来了，想来想去还是不换 `.cobaltstrike.beacon_key`了，这样至少还有已经公开的数据库可以用
+
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/69CvbIHeAB.png)
+
+花的时间最久的题目了，装两个虚拟机 + CS + 抓包 + 验证，四个半小时，看看这题会不会爆零吧
