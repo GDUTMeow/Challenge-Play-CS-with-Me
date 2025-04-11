@@ -20,7 +20,7 @@ Cobalt Strike 是一款网络安全工具，你可以把它想象成「黑客模
 
 ### 分析流量包
 
-首先拿到了一个流量包，打开流量包发现第6条就是一条 GET 请求，访问的是 http://192.168.237.128:8443/khR7，可以使用 metatool.py 进行检查，得到为 CS 流量
+首先拿到了一个流量包，打开流量包发现第6条就是一条 GET 请求，访问的是 http://192.168.237.128:8443/khR7 ，可以使用 metatool.py 进行检查，得到为 CS 流量
 
 > metatool.py https://blog.didierstevens.com/2021/04/18/metatool-py/
 >
@@ -115,10 +115,10 @@ Public key config entry found: 0x0002fe54 (xorKey b'.') (LSFIF: b'N.*.,.*.>...+.
 - `0x0001 payload type                     0x0001 0x0002 0 windows-beacon_http-reverse_http`
   - 说明这是一个通过 HTTP 传输数据的 beacon
 - `0x0002 port                             0x0001 0x0002 8443`
-  `0x0008 server,get-uri                   0x0003 0x0100 '192.168.237.128,/dot.gif'`
+- `0x0008 server,get-uri                   0x0003 0x0100 '192.168.237.128,/dot.gif'`
   - 这两行说明了服务器的 IP 地址和端口，组合起来是 `http://192.168.237.128:8443`
 - `0x0008 server,get-uri                   0x0003 0x0100 '192.168.237.128,/dot.gif'`
-  `0x000a post-uri                         0x0003 0x0040 '/submit.php'`
+- `0x000a post-uri                         0x0003 0x0040 '/submit.php'`
   - 说明了两种基本的 HTTP 请求访问的路径，GET 会访问 `/load`，POST 会访问 `/submit.php`
 - `0x0007 publickey                        0x0003 0x0100 30819f300d06092a864886f70d010101050003818d0030818902818100a70991d69d816a601ffa80976473830f0d3b41276d2790401ddedb18e2d3cab3c315e3222325be42b65adb2878f33f5a03ff5010b23e842a510c1482ad6a42f1e7e5726eb31813e7437640ed7879955f401e172c34d3517241596dd41f8e48d3d1b1c288e6c8752ff65dc27acccba4ba9cd6d0e4de6196cea4da480d3b99d0ed020301000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 Has known private key`
   - 说明了服务器的公钥是这个，而众所周知，公私钥是成对的，最后也告诉我们 `Has known private key`，也就是这个私钥是已知的！！！（很重要！！！）
