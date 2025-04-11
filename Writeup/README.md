@@ -351,7 +351,7 @@ Field: b'evil.exe'
 
 这里保存为什么，都不能代表最后在 Luminoria 的电脑里面它的样子，所以 `evil.exe` 不是正确答案！
 
-### 解密 CS 命令
+### 解密 CS 命令（第一问得解）
 
 现在我们拿到了 key 以后，我们就要用 cs-parse-http-traffic.py 来解析黑客到底发送了什么命令了
 
@@ -751,7 +751,7 @@ Callbacks summary:
 >
 > 到这里，第一题才是解完了，因为这里很明显的一条删除命令，并且你看这个文件一看就很不正经对吧，答案为 `flag{md5(G@m3S.hta)}` = `flag{7428f23249ebf79902e21253a54aa218}`
 
-### 解密传输的流量
+### 解密传输的流量（第二问得解）
 
 现在我们已经搞清楚了黑客到底在 Luminoria 的电脑上做了什么了，按照题目的要求，我们现在要做第二题的话，要提取出来这个 `SSLKEY.log` 文件
 
@@ -775,9 +775,9 @@ $ py .\CobaltStrikeAnalyze\cs-parse-traffic.py -r dd243b04f9b7a2d3d6a5d965058492
 
 ![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411224514286.png)
 
-所以这就是第二题问的 `SSLKEY.log` 文件，拿去赛博厨子 md5 一下
+所以这就是第二题问的 `SSLKEY.log` 文件，拿去赛博厨子 md5 一下，得到 `flag{3c831cb697c17a413f8650c593ce6f6e}`
 
-### 解密涩图（不许涩涩！）
+### 解密涩图（不许涩涩！第三问得解）
 
 我们上面知道了有两个文件
 
