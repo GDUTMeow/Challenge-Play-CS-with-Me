@@ -769,7 +769,7 @@ $ py .\CobaltStrikeAnalyze\cs-parse-traffic.py -r dd243b04f9b7a2d3d6a5d965058492
 
 由此得到 5 个 payload 文件
 
-![image-20250411224442064](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411224442064.png)
+![](https://cdn.jsdelivr.net/gh/GDUTMeow/Challenge-Play-CS-with-Me/Pictures/image-20250411224442064.png)
 
 在 `payload-4aadfd722106632f48ee571212b5e803.vir` 文件中，能够看到很明显的SSLKEY特征
 
