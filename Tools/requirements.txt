@@ -1,0 +1,6 @@
+peutils
+pefile
+pycryptodome
+pyshark
+hexdump
+m2crypto
